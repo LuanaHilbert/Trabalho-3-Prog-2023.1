@@ -111,7 +111,7 @@ public class Disciplina {
     }
 
     void gravar() throws IOException {
-        File arquivo = new File("disciplina.txt");
+        File arquivo = new File("disciplina.csv");
         FileWriter fw = new FileWriter(arquivo);
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter pw = new PrintWriter(bw);
@@ -124,7 +124,7 @@ public class Disciplina {
     }
 
     void carregaDados()throws IOException{
-        File arquivo = new File ("disciplina.txt");
+        File arquivo = new File ("disciplina.csv");
 
         if(arquivo.exists()){
             FileReader fr = new FileReader(arquivo);
