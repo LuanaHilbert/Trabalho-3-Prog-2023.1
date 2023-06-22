@@ -1,3 +1,10 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -62,6 +69,7 @@ public class Disciplina {
             estudante.setCpf(novoCpf);
             estudante.setNota01(novaNota01);
             estudante.setNota02(novaNota02);
+            estudante.setEstudanteCSV(novoNome + ";" + novoCpf + ";" + matricula + ";" + novaNota01 + ";" + novaNota02);
 
             return true;
         }
@@ -102,11 +110,33 @@ public class Disciplina {
         }
     }
 
-    void gravar(){
-
+    void gravar() throws IOException {
+        File arquivo = new File("disciplina.txt");
+        FileWriter fw = new FileWriter(arquivo);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+        for(Estudante novo : this.turma){
+            pw.println(novo.getEstudanteCSV());
+        }
+        pw.close();
+        bw.close();
+        fw.close();
     }
 
-    void carregaDados(){
-        
+    void carregaDados()throws IOException{
+        File arquivo = new File ("disciplina.txt");
+
+        if(arquivo.exists()){
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            String linha;
+            while((linha = br.readLine()) != null){
+                Estudante novo = new Estudante();
+                novo.setEstudanteCSV(linha);
+                this.insereEstudante(novo);
+            }
+            br.close();
+            fr.close();
+        }
     }
 }

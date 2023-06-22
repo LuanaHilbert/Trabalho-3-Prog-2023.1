@@ -1,9 +1,11 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TestaEstudante {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner entrada = new Scanner(System.in);
         Disciplina disciplina = new Disciplina();
+        disciplina.carregaDados();
 
         int opcao = 0;
 
@@ -37,6 +39,7 @@ public class TestaEstudante {
                     float nota02 = entrada.nextFloat();
 
                     Estudante novoEstudante = new Estudante(nome, cpf, matricula, nota01, nota02);
+                    novoEstudante.setEstudanteCSV(nome + ";" + cpf + ";" + matricula + ";" + nota01 + ";" + nota02);
                     disciplina.insereEstudante(novoEstudante);
                     System.out.println("Estudante cadastrado com sucesso!");
                     break;
@@ -97,6 +100,7 @@ public class TestaEstudante {
 
                 case 9:
                     System.out.println("Saindo do sistema...");
+                    disciplina.gravar();
                     break;
 
                 default:

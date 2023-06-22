@@ -5,6 +5,10 @@ public class Estudante {
     private String nome;
     private String cpf;
 
+    Estudante(){
+
+    }
+
     public Estudante(String nome, String cpf, String matricula, float nota01, float nota02) {
         this.nome = nome;
         this.cpf = cpf;
@@ -14,7 +18,7 @@ public class Estudante {
     }
 
     String getEstudanteCSV(){
-        return this.nome + ";" + this.cpf + ";" this.matricula + ";" + this.nota01 + ";" + this.nota02;
+        return this.nome + ";" + this.cpf + ";" + this.matricula + ";" + this.nota01 + ";" + this.nota02;
     }
 
     void setEstudanteCSV(String linha){

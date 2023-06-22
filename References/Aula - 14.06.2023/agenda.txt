@@ -1,0 +1,4 @@
+20;aula
+15;consulta
+12;academia
+16;veterinario

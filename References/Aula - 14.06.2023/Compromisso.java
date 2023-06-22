@@ -1,14 +1,27 @@
 public class Compromisso{
-    private Relogio hora;
+    private int hora;
     private String descricao;
 
+    Compromisso(){
 
-    Compromisso(String descricao, Relogio hora){
+    }
+
+    Compromisso(String descricao, int hora){
         this.descricao = descricao;
         this.hora = hora;
     }
 
-    Relogio getHora(){
+    void setCompromissoCSV(String linha){
+        String campos[] = linha.split(";");
+        this.hora = Integer.parseInt(campos[0]);
+        this.descricao = campos[1];
+    }
+
+    String getCompromissoCSV(){
+        return this.hora + ";" + this.descricao;
+    }
+
+    int getHora(){
         return this.hora;
     }
 
@@ -20,7 +33,7 @@ public class Compromisso{
         if (this == o) return true;
         if (!(o instanceof Compromisso)) return false;
         Compromisso c = (Compromisso) o;
-        return this.hora.equals(c.hora);
+        return this.hora == c.hora;
 
     }
 
