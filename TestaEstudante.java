@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class TestaEstudante {
     public static void main(String[] args) throws IOException {
+        Scanner entradaStr = new Scanner(System.in);
         Scanner entrada = new Scanner(System.in);
         Disciplina disciplina = new Disciplina();
         disciplina.carregaDados();
@@ -23,16 +24,15 @@ public class TestaEstudante {
 
             System.out.print("Digite a opcao desejada: ");
             opcao = entrada.nextInt();
-            entrada.nextLine(); // Limpar o buffer
 
             switch (opcao) {
                 case 1:
                     System.out.println("Digite o nome do estudante: ");
-                    String nome = entrada.nextLine();
+                    String nome = entradaStr.nextLine();
                     System.out.println("Digite o CPF do estudante: ");
-                    String cpf = entrada.nextLine();
+                    String cpf = entradaStr.nextLine();
                     System.out.println("Digite a matricula do estudante: ");
-                    String matricula = entrada.nextLine();
+                    String matricula = entradaStr.nextLine();
                     System.out.println("Digite a nota 1 do estudante: ");
                     float nota01 = entrada.nextFloat();
                     System.out.println("Digite a nota 2 do estudante: ");
@@ -46,7 +46,8 @@ public class TestaEstudante {
 
                 case 2:
                     System.out.println("Digite a matricula do estudante que deseja alterar: ");
-                    String matriculaAlterar = entrada.nextLine();
+                    String matriculaAlterar = entradaStr.nextLine();
+
                     boolean alterado = disciplina.alteraEstudante(matriculaAlterar);
                     if (alterado) {
                         System.out.println("Estudante alterado com sucesso!");
@@ -57,7 +58,7 @@ public class TestaEstudante {
 
                 case 3:
                     System.out.println("Digite a matricula do estudante que deseja remover: ");
-                    String matriculaRemover = entrada.nextLine();
+                    String matriculaRemover = entradaStr.nextLine();
                     boolean removido = disciplina.removeEstudante(matriculaRemover);
                     if (removido) {
                         System.out.println("Estudante removido com sucesso!");
@@ -68,7 +69,7 @@ public class TestaEstudante {
 
                 case 4:
                     System.out.println("Digite a matricula do estudante que deseja consultar: ");
-                    String matriculaConsultar = entrada.nextLine();
+                    String matriculaConsultar = entradaStr.nextLine();
                     Estudante estudanteConsultado = disciplina.getEstudante(matriculaConsultar);
                     if (estudanteConsultado != null) {
                         System.out.println("Nome: " + estudanteConsultado.getNome());
@@ -112,5 +113,6 @@ public class TestaEstudante {
         }
 
         entrada.close();
+        entradaStr.close();
     }
 }

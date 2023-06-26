@@ -55,7 +55,6 @@ public class Disciplina {
         Estudante estudante = getEstudante(matricula);
         if (estudante != null) {
             Scanner entrada = new Scanner(System.in);
-
             System.out.println("Digite o novo nome: ");
             String novoNome = entrada.nextLine();
             System.out.println("Digite o novo CPF: ");
@@ -71,8 +70,10 @@ public class Disciplina {
             estudante.setNota02(novaNota02);
             estudante.setEstudanteCSV(novoNome + ";" + novoCpf + ";" + matricula + ";" + novaNota01 + ";" + novaNota02);
 
+            entrada.close();
             return true;
         }
+
         return false;
     }
 
